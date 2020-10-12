@@ -28,6 +28,7 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
@@ -56,10 +57,8 @@ function counter2() {
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){
+ return Math.random(Math.random() * 3);
 }
 
 /* Task 3: finalScore()
@@ -76,12 +75,15 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(callback , num){
+  let home = 0;
+  let away = 0;
+  for (let i = 0; i < num; i++) {
+    home += callback()
+    away += callback()
+  }
+  return `{"Home": ${home}, "Away":${away}}`;
 }
-
 /* Task 4: 
 
 Create a function called `scoreboard` that accepts the following parameters: 
@@ -103,8 +105,14 @@ and returns the score at each pont in the game, like so:
 Final Score: awayTeam - homeTeam */
 
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScore, inning, num) {
+  let home = 0;
+  let away = 0;
+  for(let i = 0; i < num; i++){
+    home += inning();
+    away += inning();
+    return `1st inning: ${away} - ${home}`;
+  }
 }
 
 
